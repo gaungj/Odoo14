@@ -39,8 +39,8 @@ class SharingMonitoring(models.Model):
 
 
     def action_view_monitoring_chart(self):
-        action = self.env["ir.actions.actions"]._for_xml_id("multi_measure_line_chart_sharing.\
-                                                            sharing_monitoring_qweb_action")
+        action = self.env["ir.actions.actions"]._for_xml_id("multi_measure_line_chart_sharing."\
+                                                            "sharing_monitoring_qweb_action")
         action['context'] = {
             'active_id': self.id,
         }
