@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="assets_custom_line_chart" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/multi_measure_line_chart_sharing/static/lib/js/Chart/Chart.js"/>
+            <!-- <script type="text/javascript" src="/web/static/lib/Chart/Chart.js"/> -->
+
+            <script type="text/javascript" src="/multi_measure_line_chart_sharing/static/src/js/custom_line_chart.js"/>
+        </xpath>
+    </template>
+</odoo>
+
+

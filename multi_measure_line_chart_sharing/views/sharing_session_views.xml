@@ -1,0 +1,147 @@
+<odoo>
+  <data>
+
+    <!-- <record id="case_monitoring_view_form_inherit_case_monitoring_chart" model="ir.ui.view">
+      <field name="name">case.monitoring.view.form.inherit</field>
+      <field name="model">case.monitoring</field>
+      <field name="inherit_id" ref="asb_helpline_case_monitoring.case_monitoring_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[@name='button_box']" position="inside">
+          <button name="action_view_monitoring_chart" string="Monitoring" type="object" icon='fa-line-chart' class="oe_stat_button"/>
+        </xpath>
+      </field>
+    </record> -->
+
+    <record id="sharing_timesheet_view_form" model="ir.ui.view">
+      <field name="name">sharing.detail.view.form</field>
+      <field name="model">sharing.detail</field>
+      <field name="arch" type="xml">
+        <form >
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="sistole" />
+              <field name="diastole" />
+              <field name="date" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="sharing_timesheet_view_tree" model="ir.ui.view">
+      <field name="name">sharing.detail.view.tree</field>
+      <field name="model">sharing.detail</field>
+      <field name="arch" type="xml">
+        <tree >
+          <field name="name" />
+          <field name="sistole" />
+          <field name="diastole" />
+          <field name="date" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="sharing_monitoring_view_form" model="ir.ui.view">
+      <field name="name">sharing.monitoring.view.form</field>
+      <field name="model">sharing.monitoring</field>
+      <field name="arch" type="xml">
+        <form >
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button name="action_view_monitoring_chart" string="Chart" type="object" icon='fa-line-chart' class="oe_stat_button"/>
+            </div>
+            <group>
+              <field name="name" />
+            </group>
+            <field name="detail_line" />
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="sharing_monitoring_view_tree" model="ir.ui.view">
+      <field name="name">sharing.monitoring.view.tree</field>
+      <field name="model">sharing.monitoring</field>
+      <field name="arch" type="xml">
+        <tree >
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sharing_detail_view_line_chart">
+      <field name="name">sharing.detail.view.chart</field>
+      <field name="model">sharing.detail</field>
+      <field name="arch" type="xml">
+        <graph string="Monitoring" type="line" sample="1" disable_linking="1">
+          <field name="date" type="row" interval="day"/>
+          <field name="sistole" type="measure"/>
+        </graph>
+      </field>
+    </record>
+
+    <record id="sharing_monitoring_view_qweb" model="ir.ui.view">
+      <field name="name">sharing.monitoring.view.qweb</field>
+      <field name="type">qweb</field>
+      <field name="model">sharing.monitoring</field>
+      <field name="arch" type="xml">
+        <qweb js_class="custom_line_chart">
+          <div class="o_form_view o_form_readonly">
+            <div class="o_form_sheet_bg">
+              <div class="o_form_sheet">
+                <div class="o_timesheet_plan_sale_timesheet_dashboard">
+                  <div class="row main-section">
+
+                    <div class="o_title">
+                      <h2>Custom Chart</h2>
+                    </div>
+                    <div class="col-md-12">
+                      <canvas id="canvas" width="300" height="400"></canvas>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </qweb>
+      </field>
+    </record>
+
+    <record id="sharing_timesheet_action" model="ir.actions.act_window">
+      <field name="name">Timesheet</field>
+      <field name="res_model">sharing.detail</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="sharing_monitoring_action" model="ir.actions.act_window">
+      <field name="name">Monitoring</field>
+      <field name="res_model">sharing.monitoring</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="sharing_detail_action" model="ir.actions.act_window">
+      <field name="name">Detail</field>
+      <field name="res_model">sharing.detail</field>
+      <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <record id="sharing_monitoring_qweb_action" model="ir.actions.act_window">
+      <field name="name">Monitoring</field>
+      <field name="res_model">sharing.monitoring</field>
+      <field name="view_mode">qweb</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Monitoring" id="multi_measure_line_chart_sharing.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Monitoring" id="sharing_monitoring_action" parent="multi_measure_line_chart_sharing.menu_root" action="sharing_monitoring_action"/>
+    <menuitem name="Detail" id="sharing_detail_action" parent="multi_measure_line_chart_sharing.menu_root" action="sharing_detail_action"/>
+
+
+  </data>
+</odoo>
